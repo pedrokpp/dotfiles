@@ -39,4 +39,4 @@ vim.o.termguicolors = true
 vim.o.relativenumber = true
 vim.o.ignorecase = true
 
-vim.cmd.colorscheme "catppuccin-mocha"
+vim.cmd.colorscheme "github_dark_default"
