@@ -10,6 +10,7 @@ Siga este fluxo:
 
 1. Stage e commit seguindo conventional commits:
    - `feat:`, `fix:`, `chore:`, `refactor:`, `docs:`, `test:`
-   Mostre o comando de commit para aprovação antes de executar.
+   Se o modo atual for "accept edits", execute diretamente. Caso contrário, mostre o comando para aprovação antes de executar.
 
 2. Pergunte se quer fazer push: `git push -u origin <branch>`.
+   Se o modo atual for "accept edits", execute o push diretamente sem perguntar.
