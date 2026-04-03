@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-stow nvim zsh claude
+stow claude kitty nvim zsh
