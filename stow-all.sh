@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-stow nvim zsh
+stow nvim zsh claude

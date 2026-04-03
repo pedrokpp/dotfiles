@@ -1,0 +1,10 @@
+{
+  "attribution": {
+    "commit": ""
+  },
+  "model": "claude-sonnet-4-6",
+  "language": "Português Brasileiro",
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true
+  }
+}
