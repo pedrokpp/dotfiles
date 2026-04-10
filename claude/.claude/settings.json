@@ -3,8 +3,9 @@
     "commit": ""
   },
   "model": "claude-sonnet-4-6",
-  "language": "Português Brasileiro",
   "enabledPlugins": {
-    "gopls-lsp@claude-plugins-official": true
-  }
+    "gopls-lsp@claude-plugins-official": true,
+    "lua-lsp@claude-plugins-official": true
+  },
+  "language": "Português Brasileiro"
 }
