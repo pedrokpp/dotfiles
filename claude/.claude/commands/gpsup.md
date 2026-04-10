@@ -20,7 +20,6 @@ Se o modo atual for "accept edits", execute todos os passos diretamente sem pedi
 
 2. Execute `git checkout -b <branch>`.
 
-3. Stage e commit seguindo conventional commits:
-   - `feat:`, `fix:`, `chore:`, `refactor:`, `docs:`, `test:`
+3. Use a skill `/caveman:caveman-commit` para gerar a mensagem de commit. Stage e commit com a mensagem gerada.
 
 4. Execute `git push -u origin <branch>`.

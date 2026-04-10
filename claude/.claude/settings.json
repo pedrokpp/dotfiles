@@ -5,7 +5,16 @@
   "model": "claude-sonnet-4-6",
   "enabledPlugins": {
     "gopls-lsp@claude-plugins-official": true,
-    "lua-lsp@claude-plugins-official": true
+    "lua-lsp@claude-plugins-official": true,
+    "caveman@caveman": true
+  },
+  "extraKnownMarketplaces": {
+    "caveman": {
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman"
+      }
+    }
   },
   "language": "Português Brasileiro"
 }
