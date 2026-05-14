@@ -102,7 +102,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias update="yay -Syu"
+alias update="sudo pacman -Syu"
 
 # pnpm
 export PNPM_HOME="/home/kp/.local/share/pnpm"
