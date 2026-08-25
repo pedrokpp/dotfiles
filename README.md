@@ -5,11 +5,13 @@ Configurações pessoais gerenciadas com [GNU Stow](https://www.gnu.org/software
 ## Estrutura
 
 ```
-dotfiles/
-├── claude/   # Claude Code (CLAUDE.md, settings, commands)
-├── kitty/    # Kitty terminal
-├── nvim/     # Neovim (LazyVim)
-└── zsh/      # Zsh (.zshrc)
+$ tree .
+.
+├── hypr
+├── kitty
+├── nvim
+├── README.md
+└── zsh
 ```
 
 ## Instalação
@@ -17,6 +19,5 @@ dotfiles/
 ```sh
 git clone https://github.com/pedrokpp/dotfiles ~/dotfiles
 cd ~/dotfiles
-./stow-all.sh
+stow hypr kitty nvim zsh
 ```
-
