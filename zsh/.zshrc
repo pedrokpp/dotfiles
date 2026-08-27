@@ -4,6 +4,7 @@ path=(
   "$HOME/go/bin"
   "$HOME/bin"
   "$HOME/.local/bin"
+  "$HOME/.cargo/bin"
   /usr/local/bin
   $path
 )
@@ -60,6 +61,8 @@ alias ga='git add'
 alias gall='git add --all'
 
 alias update='sudo dnf upgrade --refresh'
+
+export EDITOR=nvim
 
 # pnpm
 export PNPM_HOME="$HOME/.local/share/pnpm"
