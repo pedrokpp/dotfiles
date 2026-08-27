@@ -33,6 +33,9 @@ for keymap in emacs viins; do
   bindkey -M "$keymap" '^[[5C' forward-word
   bindkey -M "$keymap" '^[Od' backward-word
   bindkey -M "$keymap" '^[Oc' forward-word
+  bindkey -M "$keymap" '^H' backward-kill-word
+  bindkey -M "$keymap" '^[[8;5u' backward-kill-word
+  bindkey -M "$keymap" '^[[127;5u' backward-kill-word
 done
 unset keymap
 
