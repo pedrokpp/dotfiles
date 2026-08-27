@@ -10,6 +10,7 @@ $ tree .
 ├── hypr
 ├── kitty
 ├── nvim
+├── codex
 ├── README.md
 └── zsh
 ```
@@ -19,5 +20,5 @@ $ tree .
 ```sh
 git clone https://github.com/pedrokpp/dotfiles ~/dotfiles
 cd ~/dotfiles
-stow hypr kitty nvim zsh
+stow hypr kitty nvim zsh codex
 ```
