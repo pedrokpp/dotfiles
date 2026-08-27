@@ -10,6 +10,7 @@ path=(
 
 # Completion
 autoload -Uz compinit
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 compinit
 
 # History
