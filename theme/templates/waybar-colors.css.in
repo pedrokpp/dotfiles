@@ -1,0 +1,19 @@
+/* Generated from theme/catppuccin-mocha.json. */
+@define-color rosewater #{{rosewater}};
+@define-color pink #{{pink}};
+@define-color mauve #{{mauve}};
+@define-color red #{{red}};
+@define-color peach #{{peach}};
+@define-color yellow #{{yellow}};
+@define-color green #{{green}};
+@define-color teal #{{teal}};
+@define-color blue #{{blue}};
+@define-color lavender #{{lavender}};
+@define-color text #{{text}};
+@define-color subtext0 #{{subtext0}};
+@define-color overlay0 #{{overlay0}};
+@define-color surface1 #{{surface1}};
+@define-color surface0 #{{surface0}};
+@define-color base #{{base}};
+@define-color mantle #{{mantle}};
+@define-color crust #{{crust}};

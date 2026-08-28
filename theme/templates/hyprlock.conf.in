@@ -1,0 +1,88 @@
+$font = JetBrains Mono
+$base = rgb({{base}})
+$mantle = rgb({{mantle}})
+$surface0 = rgb({{surface0}})
+$surface1 = rgb({{surface1}})
+$text = rgb({{text}})
+$subtext0 = rgb({{subtext0}})
+$mauve = rgb({{mauve}})
+$blue = rgb({{blue}})
+$red = rgb({{red}})
+
+general {
+    hide_cursor = true
+    immediate_render = true
+    ignore_empty_input = true
+}
+
+auth {
+    pam:enabled = true
+    pam:module = hyprlock
+}
+
+background {
+    monitor =
+    path = ~/.config/hypr/assets/wallpaper.png
+    blur_passes = 3
+    blur_size = 8
+    brightness = 0.48
+    color = $base
+}
+
+label {
+    monitor =
+    text = cmd[update:1000] date +"%H:%M"
+    color = $text
+    font_size = 86
+    font_family = $font
+    position = 0, 130
+    halign = center
+    valign = center
+    shadow_passes = 2
+    shadow_color = $mantle
+}
+
+label {
+    monitor =
+    text = cmd[update:60000] date +"%A, %d %B"
+    color = $subtext0
+    font_size = 18
+    font_family = $font
+    position = 0, 62
+    halign = center
+    valign = center
+}
+
+input-field {
+    monitor =
+    size = 360, 56
+    outline_thickness = 2
+    dots_size = 0.22
+    dots_spacing = 0.18
+    dots_center = true
+    outer_color = $mauve
+    inner_color = $mantle
+    font_color = $text
+    fail_color = $red
+    check_color = $blue
+    font_family = $font
+    placeholder_text = <span foreground="##{{subtext0}}">Password</span>
+    fail_text = <span foreground="##{{red}}">$FAIL <b>($ATTEMPTS)</b></span>
+    fade_on_empty = false
+    position = 0, -70
+    halign = center
+    valign = center
+    shadow_passes = 2
+    shadow_color = $mantle
+}
+
+label {
+    monitor =
+    text = $USER
+    color = $subtext0
+    font_size = 14
+    font_family = $font
+    position = 0, -120
+    halign = center
+    valign = center
+}
