@@ -1,0 +1,8 @@
+#!/usr/bin/sh
+set -eu
+
+selection=$(cliphist list | fuzzel --dmenu --prompt="Clipboard > " --with-nth=2 || true)
+[ -n "$selection" ] || exit 0
+
+printf '%s\n' "$selection" | cliphist decode | wl-copy
+notify-send --app-name=clipboard "Clipboard" "Entry copied"

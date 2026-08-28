@@ -1,0 +1,32 @@
+#!/usr/bin/sh
+set -eu
+
+mode=${1:-area}
+directory=${XDG_SCREENSHOTS_DIR:-"$HOME/Pictures/Screenshots"}
+mkdir -p "$directory"
+file="$directory/$(date +'%Y-%m-%d_%H-%M-%S').png"
+
+case "$mode" in
+  area)
+    geometry=$(slurp) || exit 0
+    [ -n "$geometry" ] || exit 0
+    grim -g "$geometry" "$file"
+    ;;
+  window)
+    geometry=$(hyprctl activewindow -j | jq -r '"\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"')
+    [ -n "$geometry" ] || exit 1
+    grim -g "$geometry" "$file"
+    ;;
+  output)
+    output=$(hyprctl monitors -j | jq -r '.[] | select(.focused).name')
+    [ -n "$output" ] || exit 1
+    grim -o "$output" "$file"
+    ;;
+  *)
+    printf 'Usage: %s {area|window|output}\n' "$0" >&2
+    exit 2
+    ;;
+esac
+
+wl-copy --type image/png < "$file"
+notify-send --app-name=screenshot "Screenshot saved" "$file"

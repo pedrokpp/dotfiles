@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Hyprland (UWSM, dotfiles)
+Comment=Hyprland session managed by UWSM
+Exec=uwsm start -- hyprland.desktop
+TryExec=uwsm
+DesktopNames=Hyprland
+Type=Application

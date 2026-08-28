@@ -1,0 +1,12 @@
+#!/usr/bin/sh
+set -eu
+
+choice=$(printf '%s\n' "Lock" "Suspend" "Logout" "Reboot" "Power off" | fuzzel --dmenu --prompt="Session > " || true)
+
+case "$choice" in
+  "Lock") hyprlock ;;
+  "Suspend") systemctl suspend ;;
+  "Logout") uwsm stop ;;
+  "Reboot") systemctl reboot ;;
+  "Power off") systemctl poweroff ;;
+esac

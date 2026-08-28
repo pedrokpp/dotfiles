@@ -1,0 +1,3 @@
+# Hyprland-specific variables belong here, not in hyprland.lua.
+# No GPU workaround is required for the single AMD amdgpu device on this host.
+export HYPRCURSOR_SIZE=24
