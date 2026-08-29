@@ -2,7 +2,7 @@
 
 Data inicial: 2026-08-28.
 
-## Testes estáticos concluídos
+## Testes concluídos
 
 | Teste | Comando ou evidência | Resultado |
 | --- | --- | --- |
@@ -37,6 +37,11 @@ Data inicial: 2026-08-28.
 | Artefatos locais | `scripts/verify.sh` | nenhum encontrado |
 | Whitespace | `git diff --check` | aprovado |
 | Wallpaper | inspeção visual e `file` | PNG 1672x941, 16:9, sem texto ou marca |
+| Sessão real | variáveis XDG e confirmação manual | Hyprland em Wayland, wallpaper e Waybar carregados pelo GDM |
+| UWSM real | `uwsm check is-active` | código de saída 0 |
+| Configuração real | `hyprctl configerrors` | nenhuma mensagem de erro |
+| Monitor real | `hyprctl monitors -j` | DP-2 em 1920x1080, 164.998 Hz e escala 1 |
+| Unidades do usuário | `systemctl --user --failed` | zero unidades falhas |
 
 Comando agregado executado:
 
@@ -49,17 +54,13 @@ Resultado: todos os checks solicitados passaram.
 
 ## Validações pendentes
 
-Estas verificações dependem da instalação de pacotes, implantação dos links e
-um login real na sessão:
+Estas verificações ainda exigem testes manuais na sessão:
 
-- carregamento do Lua sem `hyprctl configerrors`;
-- `DP-2` em 1920x1080 a aproximadamente 165 Hz;
-- Waybar, Fuzzel, Mako, wallpaper, clipboard e screenshots;
+- Fuzzel, Mako, clipboard e screenshots em uso real;
 - Hyprlock, callbacks do Hypridle e suspensão;
 - agente Polkit;
 - PipeWire, WirePlumber, teclas de áudio e Pavucontrol;
 - portal Hyprland para screencast e portal GTK para seleção de arquivo;
-- sessão UWSM sem unidades do usuário em estado failed;
 - sessão GNOME ainda selecionável e funcional no GDM;
 - inicialização completa com a rede desativada.
 
