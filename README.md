@@ -81,6 +81,13 @@ automática.
 sudo dnf copr enable lionheartp/Hyprland
 ```
 
+Dê preferência aos repositórios oficiais quando eles também oferecerem o
+pacote. O valor padrão do Fedora é 99; o COPR fica com prioridade 100:
+
+```sh
+sudo dnf config-manager setopt 'copr:copr.fedorainfracloud.org:lionheartp:Hyprland.priority=100'
+```
+
 Antes da instalação, confira os candidatos e envie a saída completa se alguma
 versão não resolver:
 
@@ -301,6 +308,10 @@ Revise a transação antes de confirmar:
 
 ```sh
 sudo dnf remove hyprland uwsm hyprlock hypridle hyprpaper xdg-desktop-portal-hyprland waybar fuzzel mako cliphist grim slurp pavucontrol playerctl lxqt-policykit jetbrains-mono-fonts fontawesome-6-free-fonts
+```
+
+```sh
+sudo dnf config-manager unsetopt 'copr:copr.fedorainfracloud.org:lionheartp:Hyprland.priority'
 ```
 
 ```sh
