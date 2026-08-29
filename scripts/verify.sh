@@ -5,6 +5,15 @@ repo_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 cd "$repo_root"
 
 failures=0
+runtime_dir=
+
+cleanup() {
+  case "$runtime_dir" in
+    "$repo_root"/.verify-runtime.*) rm -rf -- "$runtime_dir" ;;
+  esac
+}
+
+trap cleanup EXIT
 
 pass() {
   printf 'PASS  %s\n' "$1"
@@ -62,7 +71,8 @@ check_repo() {
 
   if find . -path './.git' -prune -o \
     \( -name '.env' -o -name '*.pem' -o -name 'id_rsa*' -o -name '__pycache__' \
-       -o -name '.DS_Store' -o -name 'nvim.log' \) -print -quit | grep -q .; then
+       -o -name '.DS_Store' -o -name 'nvim.log' -o -name '.verify-runtime.*' \) \
+    -print -quit | grep -q .; then
     fail "secret, cache, or local artifact candidate found"
   else
     pass "no known secret, cache, or local artifact names"
@@ -86,8 +96,8 @@ check_repo() {
     fail "generated themes match central palette"
   fi
 
-  local runtime_dir lua_file lua_failures_before
-  runtime_dir=$(mktemp -d)
+  local lua_file lua_failures_before
+  runtime_dir=$(mktemp -d "$repo_root/.verify-runtime.XXXXXX")
   lua_failures_before=$failures
   for lua_file in hypr/.config/hypr/hyprland.lua hypr/.config/hypr/modules/*.lua; do
     if command -v luac >/dev/null 2>&1; then
@@ -102,6 +112,7 @@ check_repo() {
     fi
   done
   rm -rf -- "$runtime_dir"
+  runtime_dir=
   if (( failures == lua_failures_before )); then
     pass "Lua files parsed"
   fi

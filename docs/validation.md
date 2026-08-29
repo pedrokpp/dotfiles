@@ -14,6 +14,7 @@ Data inicial: 2026-08-28.
 | Pacotes instalados | `rpm -q`, `dnf list --installed` | inventário registrado no README |
 | Pacotes Fedora | `dnf repoquery --cacheonly` | utilitários confirmados nos repositórios oficiais |
 | Origem do Hyprland | [wiki oficial](https://wiki.hypr.land/Getting-Started/Installation/) e [índice do COPR](https://copr-be.cloud.fedoraproject.org/results/lionheartp/Hyprland/fedora-44-x86_64/) | `lionheartp/Hyprland` indicado para Fedora, com builds Fedora 44 recentes |
+| Candidatos do COPR | `dnf repoquery --latest-limit=1` | Hyprland 0.56.2, UWSM 0.26.4, Hyprlock 0.9.6, Hypridle 0.1.8, Hyprpaper 0.8.4 e XDPH 1.4.1 para Fedora 44 |
 | Lua | parser Lua embutido no Neovim | todos os módulos aceitos |
 | Shell | `bash -n`, `sh -n` | todos os scripts aceitos |
 | JSON e INI | `jq`, `configparser` | estruturas aceitas |

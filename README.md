@@ -90,10 +90,14 @@ dnf repoquery --latest-limit=1 --qf '%{name} %{evr} %{arch} %{repoid}' hyprland 
 
 ### 2. Instalação de pacotes
 
-Este comando contém somente os pacotes ausentes no inventário inicial:
+Este comando contém somente os pacotes ausentes no inventário inicial. A
+transação desativa dependências fracas porque o RPM do Hyprland recomenda Wofi,
+Brightnessctl, Hyprland Qt Utils e uma segunda entrada UWSM. Esta configuração
+usa Fuzzel, mantém Brightnessctl opcional e instala sua própria entrada UWSM
+versionada.
 
 ```sh
-sudo dnf install hyprland uwsm hyprlock hypridle hyprpaper xdg-desktop-portal-hyprland waybar fuzzel mako cliphist grim slurp pavucontrol playerctl lxqt-policykit jetbrains-mono-fonts fontawesome-6-free-fonts
+sudo dnf --setopt=install_weak_deps=False install hyprland uwsm hyprlock hypridle hyprpaper xdg-desktop-portal-hyprland waybar fuzzel mako cliphist grim slurp pavucontrol playerctl lxqt-policykit jetbrains-mono-fonts fontawesome-6-free-fonts
 ```
 
 ### 3. Configuração do usuário
