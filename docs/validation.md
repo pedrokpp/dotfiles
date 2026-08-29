@@ -13,6 +13,7 @@ Data inicial: 2026-08-28.
 | Monitor | `~/.config/monitors.xml` lido sem alteração | DP-2, 1920x1080, 164.998 Hz |
 | Pacotes instalados | `rpm -q`, `dnf list --installed` | inventário registrado no README |
 | Pacotes Fedora | `dnf repoquery --cacheonly` | utilitários confirmados nos repositórios oficiais |
+| Origem do Hyprland | [wiki oficial](https://wiki.hypr.land/Getting-Started/Installation/) e [índice do COPR](https://copr-be.cloud.fedoraproject.org/results/lionheartp/Hyprland/fedora-44-x86_64/) | `lionheartp/Hyprland` indicado para Fedora, com builds Fedora 44 recentes |
 | Lua | parser Lua embutido no Neovim | todos os módulos aceitos |
 | Shell | `bash -n`, `sh -n` | todos os scripts aceitos |
 | JSON e INI | `jq`, `configparser` | estruturas aceitas |

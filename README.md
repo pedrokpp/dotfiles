@@ -300,7 +300,7 @@ sudo dnf remove hyprland uwsm hyprlock hypridle hyprpaper xdg-desktop-portal-hyp
 ```
 
 ```sh
-sudo dnf copr disable lionheartp/Hyprland
+sudo dnf copr remove lionheartp/Hyprland
 ```
 
 ### Código
