@@ -19,6 +19,13 @@ Data inicial: 2026-08-28.
 | Dependências de runtime | `scripts/verify.sh --runtime` | todos os comandos e RPMs obrigatórios presentes |
 | Configuração do Hyprland | `Hyprland --verify-config --config .../hyprland.lua` | `config ok` com Hyprland 0.56.2 |
 | GNOME preservado | `rpm -q` | GDM, GNOME Shell, GNOME Session e portais GNOME e GTK continuam instalados |
+| Links implantados | `scripts/verify.sh --deployed` | todos os destinos resolvem para fontes em `/home/kp/dotfiles` |
+| Entrada do GDM | `cmp`, `stat` e inspeção das sessões | cópia 0644 idêntica à fonte; GNOME e GNOME Classic permanecem listados |
+| Encadeamento da sessão | desktop entries, `start-hyprland` e plugin do UWSM | GDM chama UWSM, que inicia o watchdog do Hyprland sem recursão |
+| Fuzzel | `fuzzel --check-config` | configuração aceita pelo Fuzzel 1.14.0 |
+| Fontes | `fc-match` | JetBrains Mono e Font Awesome 6 resolvidas |
+| Backends de portal | descritores instalados e seletor implantado | Hyprland, GTK, GNOME e GNOME Keyring disponíveis |
+| Atualização offline preexistente | saída do DNF e `/var/lib/dnf/offline` | agendamento invalidado pela instalação; pacotes baixados preservados, sem marcador `/system-update` |
 | Lua | parser Lua embutido no Neovim | todos os módulos aceitos |
 | Shell | `bash -n`, `sh -n` | todos os scripts aceitos |
 | JSON e INI | `jq`, `configparser` | estruturas aceitas |
