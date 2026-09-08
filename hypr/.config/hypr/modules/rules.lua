@@ -1,5 +1,13 @@
-hl.workspace_rule({ workspace = "w[tv1]s[false]", gaps_in = 0, gaps_out = 0 })
+hl.workspace_rule({
+  workspace = "w[tv1]s[false]",
+  gaps_in = 0,
+  gaps_out = { top = 8, right = 0, bottom = 0, left = 0 },
+})
 hl.workspace_rule({ workspace = "f[1]s[false]", gaps_in = 0, gaps_out = 0 })
+
+for workspace = 1, 5 do
+  hl.workspace_rule({ workspace = tostring(workspace), persistent = true })
+end
 
 hl.window_rule({
   name = "smart-gaps-single-window",
@@ -20,7 +28,7 @@ hl.window_rule({
 })
 hl.window_rule({
   name = "float-system-dialogs",
-  match = { class = "^(pavucontrol|nm-connection-editor|blueman-manager)$" },
+  match = { class = "^(org[.]pulseaudio[.]pavucontrol|pavucontrol|nm-connection-editor|blueman-manager)$" },
   float = true,
   center = true,
   size = "70% 75%",

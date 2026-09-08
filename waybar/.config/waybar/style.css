@@ -23,13 +23,12 @@ tooltip {
 
 #workspaces,
 #window,
-#clock,
+#custom-clock,
 #tray,
 #idle_inhibitor,
 #network,
 #pulseaudio,
-#cpu,
-#memory,
+#temperature,
 #custom-power {
   background: alpha(@base, 0.92);
   border: 1px solid @surface0;
@@ -60,14 +59,22 @@ tooltip {
   color: @subtext0;
 }
 
-#clock {
+window#waybar.empty #window {
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+#custom-clock {
   color: @lavender;
 }
 
 #network { color: @blue; }
 #pulseaudio { color: @teal; }
-#cpu { color: @peach; }
-#memory { color: @yellow; }
+#temperature.cpu { color: @peach; }
+#temperature.gpu { color: @yellow; }
+#temperature.critical { color: @red; }
 #idle_inhibitor.activated { color: @green; }
 #idle_inhibitor.deactivated { color: @overlay0; }
 #custom-power { color: @red; padding: 0 13px; }
