@@ -59,6 +59,9 @@ alias gpsup='git push --set-upstream origin "$(git branch --show-current)"'
 alias gcmsg='git commit --message'
 alias ga='git add'
 alias gall='git add --all'
+alias gfa='git fetch --all'
+alias gl='git pull'
+alias gfagl='git fetch --all && git pull'
 
 alias update='sudo dnf upgrade --refresh'
 
