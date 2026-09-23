@@ -26,6 +26,20 @@ hl.window_rule({
   match = { class = ".*" },
   suppress_event = "maximize",
 })
+
+-- apps que sempre abrem em modo janela (flutuante)
+local floating_apps = {
+  "^(org[.]gnome[.]Nautilus)$", -- arquivos
+}
+
+for _, class in ipairs(floating_apps) do
+  hl.window_rule({
+    name = "float-" .. class,
+    match = { class = class },
+    float = true,
+    center = true,
+  })
+end
 hl.window_rule({
   name = "float-system-dialogs",
   match = { class = "^(org[.]pulseaudio[.]pavucontrol|pavucontrol|nm-connection-editor|blueman-manager)$" },

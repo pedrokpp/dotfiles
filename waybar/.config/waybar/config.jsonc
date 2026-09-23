@@ -26,7 +26,8 @@
     "exec": "env LC_ALL=pt_BR.utf8 date '+%A, %d %b %H:%M' | sed -E 's/^./\\u&/; s/ ([[:alpha:]])([[:alpha:]]{2}) / \\u\\1\\2 /'",
     "format": "{}",
     "interval": 10,
-    "tooltip": false
+    "tooltip": false,
+    "on-click": "~/.config/hypr/scripts/calendar-popup"
   },
   "tray": {
     "icon-size": 16,

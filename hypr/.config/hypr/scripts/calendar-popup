@@ -1,0 +1,106 @@
+#!/usr/bin/env python3
+"""Calendar popup pinned below the waybar clock. Click again to dismiss."""
+import os
+import signal
+import sys
+
+import gi
+
+gi.require_version("Gtk", "3.0")
+gi.require_version("Gdk", "3.0")
+gi.require_version("GtkLayerShell", "0.1")
+from gi.repository import Gdk, Gtk, GtkLayerShell
+
+PID_FILE = os.path.join(os.environ.get("XDG_RUNTIME_DIR", "/tmp"), "hypr-calendar.pid")
+
+# toggle: se já existe uma instância viva, fecha e sai
+try:
+    with open(PID_FILE) as f:
+        os.kill(int(f.read().strip()), 0)
+    with open(PID_FILE) as f:
+        os.kill(int(f.read().strip()), signal.SIGTERM)
+    sys.exit(0)
+except (FileNotFoundError, ValueError, ProcessLookupError, PermissionError):
+    pass
+
+with open(PID_FILE, "w") as f:
+    f.write(str(os.getpid()))
+
+
+def cleanup(*_):
+    try:
+        os.unlink(PID_FILE)
+    except FileNotFoundError:
+        pass
+    Gtk.main_quit()
+
+
+for sig in (signal.SIGTERM, signal.SIGINT, signal.SIGHUP):
+    signal.signal(sig, cleanup)
+
+CSS = """
+.calendar-popup {
+  background-color: rgba(30, 30, 46, 0.97);
+  border: 1px solid #45475a;
+  border-radius: 14px;
+  padding: 16px;
+}
+.calendar-popup calendar {
+  background-color: transparent;
+  color: #cdd6f4;
+  font-size: 14px;
+  min-width: 300px;
+  -GtkCalendar-inner-border: 12px;
+  -GtkCalendar-horizontal-separation: 10px;
+  -GtkCalendar-vertical-separation: 8px;
+}
+.calendar-popup calendar:selected {
+  background-color: #cba6f7;
+  color: #11111b;
+  border-radius: 8px;
+}
+.calendar-popup calendar header {
+  color: #b4befe;
+}
+.calendar-popup calendar button {
+  background-color: transparent;
+  color: #b4befe;
+}
+.calendar-popup calendar day-name {
+  color: #6c7086;
+  font-weight: bold;
+}
+.calendar-popup calendar:indeterminate {
+  color: #6c7086;
+}
+"""
+
+provider = Gtk.CssProvider()
+provider.load_from_data(CSS.encode())
+Gtk.StyleContext.add_provider_for_screen(
+    Gdk.Screen.get_default(), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION
+)
+
+window = Gtk.Window(type=Gtk.WindowType.TOPLEVEL)
+window.set_decorated(False)
+window.set_resizable(False)
+window.set_skip_taskbar_hint(True)
+window.get_style_context().add_class("calendar-popup")
+
+calendar = Gtk.Calendar()
+calendar.set_size_request(320, -1)
+window.add(calendar)
+
+if GtkLayerShell.is_supported():
+    GtkLayerShell.init_for_window(window)
+    GtkLayerShell.set_layer(window, GtkLayerShell.Layer.OVERLAY)
+    GtkLayerShell.set_anchor(window, GtkLayerShell.Edge.TOP, True)
+    GtkLayerShell.set_margin(window, GtkLayerShell.Edge.TOP, 46)
+    GtkLayerShell.set_exclusive_zone(window, -1)
+    GtkLayerShell.set_keyboard_mode(window, GtkLayerShell.KeyboardMode.NONE)
+else:
+    window.set_keep_above(True)
+
+window.connect("destroy", cleanup)
+window.show_all()
+Gtk.main()
